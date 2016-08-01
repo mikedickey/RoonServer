@@ -27,7 +27,7 @@ ADD ${ROON_INSTALLER_URL} /tmp
 RUN chmod 700 /tmp/${ROON_INSTALLER}
 
 # Run installer, answer "yes"
-CMD printf "y\ny\n" | /tmp/${ROON_INSTALLER} && tail -f /dev/null
+CMD printf "y\ny\n" | /tmp/${ROON_INSTALLER} || true
 
 # Your Roon data will be stored in /var/roon; /music is for your music
 VOLUME [ "/var/roon", "/music" ]
