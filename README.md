@@ -7,4 +7,4 @@ You currently must use the "host" networking driver with this.
 
 Example:
 
-    docker run --name RoonServer --net=host -v /home/roon:/var/roon -v /home/music:/music mikedickey/roonserver
+    docker run --name RoonServer --net=host -d -v /home/roon:/var/roon -v /home/music:/music mikedickey/roonserver

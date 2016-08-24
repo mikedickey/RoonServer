@@ -1,7 +1,7 @@
 # Dockerfile to install the latest version of RoonServer for Linux x86_64
 
-# Use Ubuntu 15.10 since it has seen the "strongest positive experiences"
-FROM ubuntu:15.10
+# Using latest ubuntu, since 15.10 still regularly crashes
+FROM ubuntu
 
 # Based upon RonCH's Dockerfile from https://community.roonlabs.com/t/roon-running-in-docker-on-synology/9979
 # and instructions from http://kb.roonlabs.com/LinuxInstall
