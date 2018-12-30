@@ -1,7 +1,7 @@
 # Dockerfile to install the latest version of RoonServer for Linux x86_64
 
-# Using latest debian, since 15.10 still regularly crashes
-FROM debian:jessie
+# Using base image to speed up builds
+FROM mikedickey/roonserver-base
 
 # Based upon RonCH's Dockerfile from https://community.roonlabs.com/t/roon-running-in-docker-on-synology/9979
 # and instructions from http://kb.roonlabs.com/LinuxInstall
@@ -14,11 +14,6 @@ ENV ROON_INSTALLER_URL http://download.roonlabs.com/builds/${ROON_INSTALLER}
 # These are expected by Roon's startup script
 ENV ROON_DATAROOT /var/roon
 ENV ROON_ID_DIR /var/roon
-
-# Install prerequisite packages
-RUN apt-get update \
-	&& apt-get install -y curl bzip2 libav-tools cifs-utils libasound2 \
-	&& apt-get clean && apt-get autoclean
 
 # Grab installer and script to run it
 ADD ${ROON_INSTALLER_URL} /tmp
