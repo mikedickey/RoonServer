@@ -4,8 +4,8 @@ FROM debian:jessie
 
 # Install prerequisite packages
 RUN apt-get update \
-	&& apt-get install -y curl bzip2 libav-tools cifs-utils libasound2 \
-	&& apt-get clean && apt-get autoclean libicu63
+	&& apt-get install -y curl bzip2 libav-tools cifs-utils libasound2 libicu52 \
+	&& apt-get clean && apt-get autoclean
 
 # Based upon RonCH's Dockerfile from https://community.roonlabs.com/t/roon-running-in-docker-on-synology/9979
 # and instructions from http://kb.roonlabs.com/LinuxInstall
