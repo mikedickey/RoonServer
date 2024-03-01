@@ -1,19 +1,15 @@
 all: roonserver
 
-base:
-	docker build -t mikedickey/roonserver-base:latest -f Dockerfile.base .
-
 roonserver:
-	docker build --no-cache -t mikedickey/roonserver:latest -f Dockerfile .
+	docker build -t mikedickey/roonserver:latest -f Dockerfile .
 
 stop:
-	docker kill RoonServer
-	docker rm RoonServer
+	docker-compose -f /etc/compose/roon.yml down
 
 start:
-	/usr/local/bin/start_roon.sh
+	docker-compose -f /etc/compose/roon.yml up -d
 
 restart:
-	docker kill RoonServer
-	docker rm RoonServer
-	/usr/local/bin/start_roon.sh
+	docker-compose -f /etc/compose/roon.yml down
+	docker-compose -f /etc/compose/roon.yml up -d
+
