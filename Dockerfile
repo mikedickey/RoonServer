@@ -1,5 +1,5 @@
 # Dockerfile to install the latest version of RoonServer for Linux x86_64
-FROM debian:bullseye
+FROM mikedickey/roonserver:base
 
 # Based upon RonCH's Dockerfile from https://community.roonlabs.com/t/roon-running-in-docker-on-synology/9979
 # and instructions from http://kb.roonlabs.com/LinuxInstall
@@ -12,11 +12,6 @@ ENV ROON_INSTALLER_URL http://download.roonlabs.com/builds/${ROON_INSTALLER}
 # These are expected by Roon's startup script
 ENV ROON_DATAROOT /var/roon
 ENV ROON_ID_DIR /var/roon
-
-# Install prerequisite packages
-RUN apt-get update \
-	&& apt-get install -y --no-install-recommends curl bzip2 ffmpeg cifs-utils libasound2 libicu67 ca-certificates \
-	&& apt-get clean && apt-get autoclean
 
 # Grab installer and script to run it
 COPY run_installer.sh /tmp
